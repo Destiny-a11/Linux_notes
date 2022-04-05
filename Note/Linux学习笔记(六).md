@@ -17,7 +17,7 @@
 	authpriv	#ssh、ftp等登录信息的验证信息
 	corn		#时间任务相关
 	kern		#内核
-	lpr			#打印
+	lpr		#打印
 	mail		#邮件
 	mark(syslog)-rsyslog	#服务内部的信息，时间标识
 	news		#新闻组
@@ -30,7 +30,7 @@
 	info		#一般信息日志，最常用
 	notice		#最具有重要性的普通条件的信息
 	warning		#警告级别
-	err			#错误级别，阻止某个功能或者模块不能正常工作的信息
+	err		#错误级别，阻止某个功能或者模块不能正常工作的信息
 	crit		#严重级别，阻止整个系统或者整个软件不能正常工作的信息
 	alert		#需要立刻修改的信息
 	emerg		#内核崩溃等重要信息
@@ -54,36 +54,37 @@
 daily				 日志的轮替周期是每天
 weekly				 日志的轮替周期是每周
 monthly				 日志的轮替周期是每月
-rotate 数字			保留的日志文件的个数。0指没有备份
+rotate 数字		       保留的日志文件的个数。0指没有备份
 compress			 日志轮替时，旧的日志进行压缩
-create mode owner group  建立新日志，同时指定新日志的权限与所有者和所属组。
-mail address		 当日志轮替时，输出内容通过邮件发送到指定的邮件地址。
+create mode owner group  	 建立新日志，同时指定新日志的权限与所有者和所属组。
+mail address			 当日志轮替时，输出内容通过邮件发送到指定的邮件地址。
 missingok			 如果日志不存在，则忽略该日志的警告信息
 notifempty			 如果日志为空文件，则不进行日志轮替
-minsize	大小			日志轮替的最小值。也就是日志一定要达到这个最小值才会轮替，否则就算时间达到也不轮替
-size 大小				日志只有大于指定大小才进行日志轮替，而不是按照时间轮替。
+minsize	大小		       日志轮替的最小值。也就是日志一定要达到这个最小值才会轮替，否则就算时间达到也不轮替
+size 大小			       日志只有大于指定大小才进行日志轮替，而不是按照时间轮替。
 dateext				 使用日期作为日志轮替文件的后缀。
-sharedscripts		 在此关键字之后的脚本只执行一次。
-prerotate/endscript	 在日志轮替之前执行脚本命令。
-postrotate/endscript 在日志轮替之后执行脚本命令。
+sharedscripts		 	 在此关键字之后的脚本只执行一次。
+prerotate/endscript	 	 在日志轮替之前执行脚本命令。
+postrotate/endscript 		 在日志轮替之后执行脚本命令。
 ```
 
 ```
 查看内存日志：
 journalctl				#查看全部
-journalctl -n 3			#查看最新3条
-joumalctl --since 19:00--until 19:10:10		#查看起始时间到结束时间的日志可加日期journalctl -p err	   #报错日志
-journalctl -o verbose	#日志详细内容
-jourmalctl_PID=1245 _COMM=sshd #查看包含这些参数的日志（在详细日志查看，或者journalctl | grep sshd）
+journalctl -n 3				#查看最新3条
+joumalctl --since 19:00--until 19:10:10		#查看起始时间到结束时间的日志可加日期
+journalctl -p err	   		#报错日志
+journalctl -o verbose			#日志详细内容
+jourmalctl_PID=1245 _COMM=sshd 		#查看包含这些参数的日志（在详细日志查看，或者journalctl | grep sshd）
 ```
 
 #### 2、升级内核
 
 ```
 uname -a 			//查看当前的内核版本
-yum info kernel -q	//检测内核版本，显示可以升级的内核
-yum update kernel	//升级内核
-yum list kernel -q	//查看已经安装的内核
+yum info kernel -q		//检测内核版本，显示可以升级的内核
+yum update kernel		//升级内核
+yum list kernel -q		//查看已经安装的内核
 ```
 
 3、备份
